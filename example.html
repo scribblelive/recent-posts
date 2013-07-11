@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>ScribbleLive Recent Posts</title>
+    <script type="text/javascript" src="SLRecentPostsv1.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/SLRecentPostsStylesv1.css" />
+</head>
+<body>
+
+<h1>ScribbleLive Recent Posts</h1>
+<ul id="RecentPostsList">
+</ul>
+<script type="text/javascript">
+    var ScribbleLiveInstance = new RecentPosts(
+        {
+            "APIToken": "YOUR_API_KEY",
+            "EventId": "YOUR_EVENT_ID", 
+            "WhereToAddPosts": "RecentPostsList",
+            "TotalPostsToShow": 10 
+        } );
+</script>
+
+</body>
+</html>

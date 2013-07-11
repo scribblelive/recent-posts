@@ -1,0 +1,49 @@
+ul.RecentPostsWidget {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+	width: 399px;
+	border: 1px solid #ccc;
+	border-bottom: 0;
+	float: left;
+}
+
+ul.RecentPostsWidget li {
+	margin: 0;
+	padding: 10px;
+	list-style-type: none;
+	border-bottom: 1px solid #ccc;
+	float: left;
+	width: 379px;
+}
+
+ul.RecentPostsWidget li img {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+ul.RecentPostsWidget li .Content img {
+	float: none;
+	margin: 0 0 10px;
+    width: 320px;
+}
+
+ul.RecentPostsWidget li .Content {
+	padding-bottom: 5px;
+	color: #333;
+}
+
+ul.RecentPostsWidget li .Meta {
+	font-size: 11px;
+	color: #555;
+}
+
+ul.RecentPostsWidget li .Meta .ServerTime {
+	display: none;
+}
+
+dd.Voting {
+	color: green;
+}
