@@ -35,7 +35,7 @@ The variable name can be anything you like. It allows you to add more than one o
 
 __APIToken__
 
-To get an API token you must have a ScribbleLive? account. Log in to https://client.scribblelive.com, go to the API section, and either grab a token if you already have one or generate a new one.
+To get an API token you must have a ScribbleLive account. Log in to https://client.scribblelive.com, go to the API section, and either grab a token if you already have one or generate a new one.
 
 __EventId__
 
