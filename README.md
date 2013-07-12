@@ -4,6 +4,8 @@ A javascript that communicates with the ScribbleLive API to get the posts from a
 
 You can pass in various options like how many posts to show and what types of posts to show. You also have total control over how the posts are displayed.
 
+**__Creator: Matt Mccausland__**
+
 ##Introduction
 
 
