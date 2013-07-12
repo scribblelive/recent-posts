@@ -41,7 +41,7 @@ To get an API token you must have a ScribbleLive account. Log in to https://clie
 
 __EventId__
 
-The id of the ScribbleLive? event you would like to display. You can find this by logging in to https://client.scribblelive.com, and going to the API section of your event. The id it at the top of the API section.
+The id of the ScribbleLive event you would like to display. You can find this by logging in to https://client.scribblelive.com, and going to the API section of your event. The id it at the top of the API section.
 
 __TotalPostsToShow__
 
