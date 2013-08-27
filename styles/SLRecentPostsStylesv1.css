@@ -1,3 +1,4 @@
+
 ul.RecentPostsWidget {
 	margin: 0;
 	padding: 0;
@@ -27,12 +28,13 @@ ul.RecentPostsWidget li img {
 ul.RecentPostsWidget li .Content img {
 	float: none;
 	margin: 0 0 10px;
-    width: 320px;
+	width: 310px;
 }
 
 ul.RecentPostsWidget li .Content {
 	padding-bottom: 5px;
 	color: #333;
+	margin-left: 60px;
 }
 
 ul.RecentPostsWidget li .Meta {
@@ -46,4 +48,323 @@ ul.RecentPostsWidget li .Meta .ServerTime {
 
 dd.Voting {
 	color: green;
+}
+
+/****Advance Post Style Start****/ 
+
+#RecentPostsList blockquote h3{
+letter-spacing: -0.03em;
+margin: 0 0 10px ;
+font-size: 15px;
+font-weight: bold;
+clear: both;
+}
+
+/* TWEETS */
+
+#RecentPostsList li .Content .sltc-twitter,
+ #RecentPostsList .sltc-twitter {
+	position: relative;
+	margin: 0;
+	padding: 35px 15px 10px 15px;
+	border: 1px solid #DDDDDD;
+	background: #FFFFFF;
+	border-radius: 3px;
+	font-family: Helvetica, Arial, sans-serif;
+	line-height: 18px;
+	cursor: default;
+}
+
+#RecentPostsList li .Content .sltc-twitter a,
+ #RecentPostsList .sltc-twitter a {
+	color: #000;
+	text-decoration: none;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-logo,
+ #RecentPostsList .sltc-logo {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 25px;
+	height: 25px;
+	background: url(../images/twitter-bird.png) 0 0 no-repeat;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-logo a,
+ #RecentPostsList .sltc-logo a {
+	width: 25px;
+	height: 25px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-avatar,
+ #RecentPostsList .sltc-avatar {
+	float: left;
+	width: 40px;
+	margin: 0 10px 0 0;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-avatar img,
+ #RecentPostsList .sltc-avatar img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin: 0 10px 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-info .sltc-name,
+ #RecentPostsList .sltc-twitter .sltc-author .sltc-info .sltc-name {
+	margin: 0 0 2px 0;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-info .sltc-username,
+ #RecentPostsList .sltc-twitter .sltc-author .sltc-info .sltc-username {
+	margin: 0 0 10px 0;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-info .sltc-username a,
+ #RecentPostsList .sltc-twitter .sltc-author .sltc-info .sltc-username a {
+	color: #999;
+	font-size: 14px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-text,
+ #RecentPostsList .sltc-twitter .sltc-text {
+	clear: left;
+	font-family: "Times New Roman";
+	font-size: 17px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-text a,
+ #RecentPostsList .sltc-twitter .sltc-text a {
+	color: #999;
+	text-decoration: none;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-text a:hover,
+ #RecentPostsList .sltc-twitter .sltc-text a:hover {
+	text-decoration: underline;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-text .sltc-tweetimage,
+ #RecentPostsList .sltc-twitter .sltc-text .sltc-tweetimage {
+	width: 95%;
+	margin: 10px auto;
+	padding: 10px;
+	border: 1px solid #DDD;
+	border-width: 0 0 0 0;
+	text-align: center;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-text .sltc-tweetimage img,
+ #RecentPostsList .sltc-twitter .sltc-text .sltc-tweetimage img {
+	display: inline-block;
+	width: auto;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-lower,
+ #RecentPostsList .sltc-twitter .sltc-lower {
+	position: relative;
+	margin: 15px 0 0 0;
+	font-size: 12px;
+	color: #999;
+	overflow: hidden;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-lower a,
+ #RecentPostsList .sltc-twitter .sltc-lower a {
+	float: left;
+	color: #999;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions,
+ #RecentPostsList .sltc-twitter .sltc-actions {
+	float: right;
+	margin: 0;
+	list-style: none;
+}
+
+#Discussion #StickyPostHolder li .Content .sltc-twitter .sltc-actions li {
+	padding: 0 0 0 20px;
+	background-color: transparent;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li,
+ #RecentPostsList .sltc-twitter .sltc-actions li {
+	float: left;
+	display: block;
+	width: auto;
+	margin: -1px 0 0 10px;
+	padding: 0 0 0 20px;
+	background: url(../images/twitter_function_sprite.png) 0 0 no-repeat;
+	color: #999;
+	font-size: 12px;
+	cursor: pointer;
+	border-bottom: medium none;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li:hover,
+ #RecentPostsList .sltc-twitter .sltc-actions li:hover {
+	color: #333;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li.reply,
+ #RecentPostsList .sltc-twitter .sltc-actions li.reply {
+	background-position: -3px 1px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li.reply:hover,
+ #RecentPostsList .sltc-twitter .sltc-actions li.reply:hover {
+	background-position: -3px -27px;
+}
+
+#Discussion #StickyPostHolder li .Content .sltc-twitter .sltc-actions li {
+	padding: 0 0 0 23px;
+	background-color: transparent;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li.retweet,
+ #RecentPostsList .sltc-twitter .sltc-actions li.retweet {
+	padding-left: 23px;
+	background-position: -2px -54px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li.retweet:hover,
+ #RecentPostsList .sltc-twitter .sltc-actions li.retweet:hover {
+	background-position: -2px -81px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li.favorite,
+ #RecentPostsList .sltc-twitter .sltc-actions li.favorite {
+	background-position: -1px -110px;
+}
+
+#RecentPostsList li .Content .sltc-twitter .sltc-actions li.favorite:hover,
+ #RecentPostsList .sltc-twitter .sltc-actions li.favorite:hover {
+	background-position: -1px -139px;
+}
+
+/* BLOCKQUOTES */
+
+#RecentPostsList blockquote {
+	position: relative;
+	display: block;
+	width: auto;
+	margin: 0px;
+	padding: 30px 20px 30px 60px;
+	background: #FFFFFF url(../images/Blockquotes.png) 10px 10px no-repeat;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	font-size: 16px;
+	font-family: Georgia, 'Times New Roman';
+	font-style: italic;
+}
+
+#RecentPostsList blockquote h3 {
+	font-style: normal;
+}
+
+
+ul.RecentPostsWidget li blockquote .Content { 
+	margin:0;
+} 
+
+#RecentPostsList blockquote span.Meta {
+	display: block;
+	min-height: 30px;
+	margin: 10px -7px -20px 10px;
+	padding: 0;
+	text-align: right;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #999;
+	line-height: 15px;
+	font-style: normal;
+}
+
+#RecentPostsList blockquote span.Meta img {
+	float: right;
+	width: 30px;
+	height: 30px;
+	margin: -3px 0 0 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+#RecentPostsList blockquote span.Meta a {
+	font-weight: normal;
+}
+ 
+#RecentPostsList blockquote span.Meta em,  #RecentPostsList blockquote span.Meta i, {
+ display: block;
+ font-weight: bold;
+ font-style: normal;
+ font-size: 12px;
+ color: #333;
+}
+
+
+
+/* MEDIA */
+
+#RecentPostsList > .Media
+ {
+	position: relative;
+	margin: 0;
+	padding: 10px 10px 8px 10px;
+	background: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	font-size: 16px;
+	font-family: Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+
+#RecentPostsList .Media.SL_Left,
+#Discussion .Posts li .Content .Media.SL_Left {
+	margin: 0 10px 10px 0;
+}
+
+#RecentPostsList .Media.SL_Right,
+#Discussion .Posts li .Content .Media.SL_Right {
+	margin: 0 0 10px 10px;
+}
+
+#RecentPostsList .Media .Caption {
+	position: relative;
+	margin: 0;
+	padding: 4px 0 0 0;
+	font-size: 13px;
+	background: transparent;
+	color: #333;
+	text-align: center;
+}
+
+#RecentPostsList .Media .Meta,
+ #Discussion .Posts li .Content .Media .Meta {
+	display: block;
+	margin: 5px 0 0 0;
+	padding: 0;
+	text-align: left;
+	font-size: 11px;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #999;
+	line-height: 18px;
+}
+
+#RecentPostsList .Media .Meta em,
+ #RecentPostsList .Media .Meta i,
+ #Discussion .Posts li .Content .Media .Meta em,
+ #Discussion .Posts li .Content .Media .Meta i {
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+	color: #999;
 }

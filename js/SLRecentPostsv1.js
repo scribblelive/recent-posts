@@ -303,7 +303,7 @@ RecentPosts.prototype.AddMedia = function (pPost) {
 	var MediaHtml;
 	for (var m = 0; m < Media.length; m++) {
 		if (pPost.Type === "IMAGE" && Media[m].Type === "IMAGE") {
-			MediaHtml = "<img src='" + Media[m].Url + "'/>";
+			MediaHtml = "<img src='../" + Media[m].Url + "'/>";
 		}
 		if (pPost.Type === "VIDEO" && Media[m].Type === "VIDEO") {
 			MediaHtml = "<embed type='application/x-shockwave-flash' src='http://embed.scribblelive.com/js/jwflvplayer/player-licensed.swf?ThreadId=" + this.Options.EventId + "' flashvars='file=" + Media[m].Url + "'>";
