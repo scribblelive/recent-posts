@@ -30,14 +30,14 @@ a:link, a:visited, a:active { color: #999999;}
 }
 
 #RecentPostsList .SL_SlideShow .MediaWrap {
-	padding: 5px 5px 20x 5px !important;
+	padding: 5px;
 	margin: 0;
 	text-align: left;
 	position: static;
 	background: #fff;
 	border: 1px solid #DDDDDD;
 	border-radius: 3px;
-	height:425px !important;
+	height:auto !important;
 }
 
 /* Fallback for IE7/8 */
@@ -65,22 +65,19 @@ a:link, a:visited, a:active { color: #999999;}
 	padding: 0;
 	text-align: center;
 	overflow: visible;
-	background: #eee;
 	border: 0px;
 	border-radius: 0px;
-	height:319px!important;
+	height:auto !important;
 }
 
 #RecentPostsList .SL_SlideShow .MediaWrap .Media img {
-	padding: 4px;
+	margin: 0px;
 }
 
 #RecentPostsList .SL_SlideShow .MetaWrap {
-	position: absolute;
 	left: 0;
 	right: 0;
 	white-space: nowrap;
-	top:328px !important;
 }
 
 
@@ -129,14 +126,14 @@ a:link, a:visited, a:active { color: #999999;}
 
 #RecentPostsList .SL_SlideShow_Counter {
 	position: absolute;
-	bottom:28px;
-	left: 0px;
-	width: 55px;
-	max-width: 55px;
-	z-index: 1;
-	text-align: center ;
-	padding-bottom: 5px ;
-	font-family: Helvetica, Arial, sans-serif;
+    top: 310px;
+    left: 0px;
+    width: 55px;
+    max-width: 55px;
+    z-index: 1;
+    text-align: center;
+    padding-bottom: 5px;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 #RecentPostsList .SL_SlideShow_Counter p {
