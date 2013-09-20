@@ -70,7 +70,47 @@ function RecentPosts(Options) {
 
     // Call the function that loads the most recent posts.
     this.GetAllPosts();
-    
+
+    var _self = this;
+    // Attach event handlers for previous/next links for slideshows
+    $(".SlideShowNext").live('click', function (e) {
+        e.preventDefault();
+        var SlideShowDiv = $(this).parent();
+        var VisibleSlide = SlideShowDiv.find(".SL_SlideShow_Slide").not(".HideSlide");
+        var NextSlide = VisibleSlide.nextAll(".HideSlide").first();
+
+        if (NextSlide.length === 0) {
+            NextSlide = SlideShowDiv.find(".SL_SlideShow_Slide:first");
+            _self.UpdateSlideCurrent(SlideShowDiv, 1);
+        }
+        else {
+            _self.UpdateSlideCurrent(SlideShowDiv, parseInt(SlideShowDiv.find(".SL_SlideShow_Current").html(), 10) + 1);
+        }
+        NextSlide.removeClass("HideSlide");
+        VisibleSlide.addClass("HideSlide");
+        return false;
+    });
+
+    $(".SlideShowPrev").live('click', function (e) {
+        e.preventDefault();
+        var SlideShowDiv = $(this).parent();
+        var VisibleSlide = SlideShowDiv.find(".SL_SlideShow_Slide").not(".HideSlide");
+        var PrevSlide = VisibleSlide.prevAll(".HideSlide").first();
+
+        if (PrevSlide.length === 0) {
+            PrevSlide = SlideShowDiv.find(".SL_SlideShow_Slide:last");
+            _self.UpdateSlideCurrent(SlideShowDiv, SlideShowDiv.find(".SL_SlideShow_Slide").length);
+        }
+        else {
+            _self.UpdateSlideCurrent(SlideShowDiv, parseInt(SlideShowDiv.find(".SL_SlideShow_Current").html(), 10) - 1);
+        }
+        PrevSlide.removeClass("HideSlide");
+        VisibleSlide.addClass("HideSlide");
+        return false;
+    });
+
+
+
     (function( w, d, eid ){
           var id = 'sl-libjs', where = d.getElementsByTagName( 'script' )[0];
 
@@ -169,7 +209,7 @@ RecentPosts.prototype.DrawPosts = function (pResponse) {
 
 // The function that adds a post.
 RecentPosts.prototype.AddPost = function (pPost, pPostList) {
-    
+
     // A huge if statement that decides if it should be showing a post or not based on the options set when the widget is loaded.
     if (
         (pPost.Type === "IMAGE" && !this.Options.ShowImages) ||
@@ -192,7 +232,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
 
     // If the post you are trying to add is already on the page, stop trying to add it.
     for (var c = 0; c < pPostList.length; c++) {
-        if (pPost.Id === parseInt(pPostList[c])) {   
+        if (pPost.Id === parseInt(pPostList[c])) {
             return;
         }
     }
@@ -233,7 +273,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     var PostDate = eval("new " + (pPost.LastModified.replace(/\//g, "")));
 
     // Set the creator name. If the source is a social network, add a link to the social network account.
-    var CreatorName; 
+    var CreatorName;
     if (pPost.Source.match("twitter")) {
         CreatorName = "<a href='http://www.twitter.com/" + pPost.Creator.Name + "'>" + pPost.Creator.Name + "</a>";
     } else {
@@ -270,6 +310,17 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     } else {
         document.getElementById("RecentPostsWidget" + this.InstanceIndex).insertBefore(NewListItem, document.getElementById("RecentPostsWidget" + this.InstanceIndex).firstChild);
     }
+
+    var _self = this;
+    setTimeout(function () {
+        _self.ResizeAllSlideshows(NewListItem);
+    }, 200);
+
+};
+
+RecentPosts.prototype.UpdateSlideCurrent = function (pSlideShow, pValue) {
+    $(pSlideShow).find(".SL_SlideShow_Current").html(pValue);
+    $(".FloatingXButton,.FloatingEditButton").remove();
 };
 
 // The function that deletes a post.
@@ -303,7 +354,7 @@ RecentPosts.prototype.AddMedia = function (pPost) {
 	var MediaHtml;
 	for (var m = 0; m < Media.length; m++) {
 		if (pPost.Type === "IMAGE" && Media[m].Type === "IMAGE") {
-			MediaHtml = "<img src='../" + Media[m].Url + "'/>";
+			MediaHtml = "<img src='" + Media[m].Url + "'/>";
 		}
 		if (pPost.Type === "VIDEO" && Media[m].Type === "VIDEO") {
 			MediaHtml = "<embed type='application/x-shockwave-flash' src='http://embed.scribblelive.com/js/jwflvplayer/player-licensed.swf?ThreadId=" + this.Options.EventId + "' flashvars='file=" + Media[m].Url + "'>";
@@ -367,7 +418,7 @@ RecentPosts.prototype.VoteOnPoll = function (pPollId, pAnswerId) {
 	// Add the api call that submits the vote.
 	var VotePollAPICall = document.createElement("script");
     VotePollAPICall.type = "text/javascript";
-    VotePollAPICall.src = "http://apiv1.scribblelive.com/poll/" + pPollId + "/vote/" + pAnswerId + "?callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").PollVoteSuccess";
+    VotePollAPICall.src = "https://dev.scribblelive.com/api/rest/poll/" + pPollId + "/vote/" + pAnswerId + "?callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").PollVoteSuccess";
     document.getElementsByTagName("head")[0].appendChild(VotePollAPICall);
 };
 
@@ -377,7 +428,7 @@ RecentPosts.prototype.PollVoteSuccess = function (pPollResponse) {
 	var Scripts = document.getElementsByTagName("head")[0].getElementsByTagName("script");
     for (var i = 0; i < Scripts.length; i++) {
         var ScriptSource = Scripts[i].src;
-        if (ScriptSource.match("^\http:\/\/apiv1\.scribblelive\.com/poll/" + pPollResponse.Id + ".*") !== null) {
+        if (ScriptSource.match("^\?:\/\/dev\.scribblelive\.com/poll/" + pPollResponse.Id + ".*") !== null) {
             document.getElementsByTagName("head")[0].removeChild(Scripts[i]);
         }
     }
@@ -388,10 +439,147 @@ RecentPosts.prototype.PollVoteSuccess = function (pPollResponse) {
 	PollParent.appendChild(this.DisplayPoll(pPollResponse, true));
 };
 
+//the function that resizes a slideshow
+RecentPosts.prototype.ResizeSlideshow = function (slideshowContainer) {
+    var max = 0,
+        maxImg = 0,
+        maxImgW = 0,
+        maxCaption = 0,
+        counterHeight = 0;
+
+    if (!$(slideshowContainer).hasClass('SL_SlideShow')) {
+        slideshowContainer = $(slideshowContainer).closest('.SL_SlideShow');
+        if (!slideshowContainer.length) {
+            return;
+        }
+    }
+
+    $('.SL_SlideShow_Slide .MediaWrap', slideshowContainer).css('height', 'auto');
+    $('.SL_SlideShow_Slide .Media', slideshowContainer).css('height', 'auto');
+    $('.SL_SlideShow_Counter', slideshowContainer).css('height', 'auto');
+
+    counterHeight = slideshowContainer.find('.SL_SlideShow_Counter').height();
+
+    //use content div to determine size
+    $('.SL_SlideShow_Slide', slideshowContainer).each(function (i, el) {
+
+        var $slide = $(this),
+        IsTweet = $slide.find('.sltc-twitter').length > 0;
+        $img = IsTweet ? $slide.find('.sltc-twitter') : $slide.find('img'),
+        $media = $img.parent('.Media');
+        $meta = $slide.find('.Meta'),
+        $caption = $slide.find('.Caption');
+
+        //set tweet width to parent
+        if (IsTweet && $img.find("img").not(".sltc-avatar img").length == 0) {
+            $img.css('width', $media.width() - ($img.outerWidth() - $img.width()));
+        }
+
+        // Determine tallest container dimension
+        if ($img.outerHeight() > maxImg) {
+            maxImg = $img.outerHeight();
+        }
+
+        // Determine widest container dimension
+        if ($img.width() > maxImgW) {
+            maxImgW = $img.width();
+        }
+
+        // Determine tallest caption dimensions
+        if (($caption.outerHeight() + $meta.outerHeight()) > maxCaption) {
+            maxCaption = ($caption.outerHeight() || 0) + ($meta.outerHeight() || 0);
+        }
+
+        if (maxCaption < counterHeight) {
+            maxCaption = counterHeight;
+        }
+
+
+    });
+
+    max = maxImg + maxCaption;
+
+    // Set dimensions of containers
+    if (max > 0) {
+        $('.SL_SlideShow_Slide .MediaWrap', slideshowContainer).css('height', max);
+        $('.SL_SlideShow_Slide .Media', slideshowContainer).css('height', maxImg);
+        $('.SL_SlideShow_Slide .MetaWrap', slideshowContainer).css('top', maxImg);
+        $('.SL_SlideShow_Counter', slideshowContainer).css('height', max - maxImg);
+    }
+
+    $('.SlideShowNav', slideshowContainer).css('top', maxImg / 2);
+
+    $slideContent = $('.SL_SlideShow_Slide .sltc-twitter').add($('.SL_SlideShow_Slide img').not('.sltc-twitter img'));
+
+    // set content dimensions and center within the container
+    $($slideContent, slideshowContainer).each(function (i, el) {
+        var $img = $(el),
+            $media = $(el).parents('.Media'),
+            diff = ((maxImg - $img.height()) / 2),
+            $width = $img.outerWidth(),
+            $height = $img.outerHeight();
+
+        //special case for twitter text slides
+        if ($img.hasClass("sltc-twitter")) {
+            $img.css({
+                'position': 'absolute',
+                'top': '50%',
+                'margin-top': (($height / 2) * -1),
+                'width': $media.width() - ($img.outerWidth() - $img.width())
+            });
+        } else if ($height < maxImg && $width < $media.width()) {
+            // center image both horiz. and vert.
+            $img.css({
+                'position': 'absolute',
+                'margin-left': (($width / 2) * -1),
+                'margin-top': (($height / 2) * -1),
+                'left': '50%',
+                'top': '50%'
+            });
+        } else if ($height < maxImg) {
+            // center image vertically
+            $img.css({
+                'position': 'absolute',
+                'margin-left': '0',
+                'left': '0',
+                'margin-top': (($height / 2) * -1),
+                'top': '50%'
+            });
+        } else if ($width < $media.width()) {
+            // center image horizontally
+            $img.css({
+                'position': 'absolute',
+                'margin-top': '0',
+                'top': '0',
+                'margin-left': (($width / 2) * -1),
+                'left': '50%'
+            });
+        } else {
+            // no centering required.
+            $img.css({
+                'position': 'relative',
+                'top': '0',
+                'margin-top': '0',
+                'left': '0',
+                'margin-left': '0'
+            });
+        }
+    });
+    
+};
+
+//resize all slideshows in a container
+RecentPosts.prototype.ResizeAllSlideshows = function (container) {
+    var _self = this;
+    jQuerySL(container).find('.SL_SlideShow').each(function (i, el) {
+        _self.ResizeSlideshow(jQuerySL(el));
+    });
+};
+
 // Create a list of posts currently on the page by finding all list items inside the RecentPostsWidget list and adding their ids to an array.
 RecentPosts.prototype.GetPostList = function () {
     var CurrentPostsList = [];
-    var CurrentPosts = document.getElementById("RecentPostsWidget" + this.InstanceIndex).getElementsByTagName("li");
+    var CurrentPosts = document.getElementById("RecentPostsWidget" + this.InstanceIndex).children;
     for (var j = 0; j < CurrentPosts.length; j++) {
         CurrentPostsList.push(CurrentPosts[j].getAttribute("id"));
     }
@@ -405,7 +593,7 @@ RecentPosts.prototype.GetNewPosts = function (pLastPostTime) {
     var Scripts = document.getElementsByTagName("head")[0].getElementsByTagName("script");
     for (var i = 0; i < Scripts.length; i++) {
         var ScriptSource = Scripts[i].src;
-        if (ScriptSource.match("^\http:\/\/apiv1\.scribblelive\.com/event/" + this.Options.EventId + ".*") !== null) {
+        if (ScriptSource.match("^\https?:\/\/dev\.scribblelive\.com/event/" + this.Options.EventId + ".*") !== null) {
             document.getElementsByTagName("head")[0].removeChild(Scripts[i]);
         }
     }
@@ -415,7 +603,7 @@ RecentPosts.prototype.GetNewPosts = function (pLastPostTime) {
     // Add the new API call to the head of the page taking into account the event id, API token, and last post time.
     var LoadPostsCall = document.createElement("script");
     LoadPostsCall.type = "text/javascript";
-    LoadPostsCall.src = "http://apiv1.scribblelive.com/event/" + this.Options.EventId + "/all/?Token=" + this.Options.APIToken + "&Order=asc&format=json&Since=" + LastModifiedTimeFormatted + "&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
+    LoadPostsCall.src = "https://dev.scribblelive.com/api/rest/event/" + this.Options.EventId + "/all/?Token=" + this.Options.APIToken + "&Order=asc&format=json&Since=" + LastModifiedTimeFormatted + "&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
     document.getElementsByTagName("head")[0].appendChild(LoadPostsCall);
 
 };
@@ -432,6 +620,6 @@ RecentPosts.prototype.CreatePostList = function () {
 RecentPosts.prototype.GetAllPosts = function () {
     var LoadPostsCall = document.createElement("script");
     LoadPostsCall.type = "text/javascript";
-    LoadPostsCall.src = "http://apiv1.scribblelive.com/event/" + this.Options.EventId + "/page/last/?Token=" + this.Options.APIToken + "&Max=" + this.Options.TotalPostsToShow + "&Order=asc&format=json&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
+    LoadPostsCall.src = "https://dev.scribblelive.com/api/rest/event/" + this.Options.EventId + "/page/last/?Token=" + this.Options.APIToken + "&Max=" + this.Options.TotalPostsToShow + "&Order=asc&format=json&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
     document.getElementsByTagName("head")[0].appendChild(LoadPostsCall);
 };
