@@ -418,7 +418,7 @@ RecentPosts.prototype.VoteOnPoll = function (pPollId, pAnswerId) {
 	// Add the api call that submits the vote.
 	var VotePollAPICall = document.createElement("script");
     VotePollAPICall.type = "text/javascript";
-    VotePollAPICall.src = "https://dev.scribblelive.com/api/rest/poll/" + pPollId + "/vote/" + pAnswerId + "?callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").PollVoteSuccess";
+    VotePollAPICall.src = "http://apiv1.scribblelive.com/poll/" + pPollId + "/vote/" + pAnswerId + "?callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").PollVoteSuccess";
     document.getElementsByTagName("head")[0].appendChild(VotePollAPICall);
 };
 
@@ -428,7 +428,7 @@ RecentPosts.prototype.PollVoteSuccess = function (pPollResponse) {
 	var Scripts = document.getElementsByTagName("head")[0].getElementsByTagName("script");
     for (var i = 0; i < Scripts.length; i++) {
         var ScriptSource = Scripts[i].src;
-        if (ScriptSource.match("^\?:\/\/dev\.scribblelive\.com/poll/" + pPollResponse.Id + ".*") !== null) {
+        if (ScriptSource.match("^\http:\/\/apiv1\.scribblelive\.com/poll/" + pPollResponse.Id + ".*") !== null) {
             document.getElementsByTagName("head")[0].removeChild(Scripts[i]);
         }
     }
@@ -593,7 +593,7 @@ RecentPosts.prototype.GetNewPosts = function (pLastPostTime) {
     var Scripts = document.getElementsByTagName("head")[0].getElementsByTagName("script");
     for (var i = 0; i < Scripts.length; i++) {
         var ScriptSource = Scripts[i].src;
-        if (ScriptSource.match("^\https?:\/\/dev\.scribblelive\.com/event/" + this.Options.EventId + ".*") !== null) {
+         if (ScriptSource.match("^\http:\/\/apiv1\.scribblelive\.com/event/" + this.Options.EventId + ".*") !== null) {
             document.getElementsByTagName("head")[0].removeChild(Scripts[i]);
         }
     }
@@ -603,7 +603,7 @@ RecentPosts.prototype.GetNewPosts = function (pLastPostTime) {
     // Add the new API call to the head of the page taking into account the event id, API token, and last post time.
     var LoadPostsCall = document.createElement("script");
     LoadPostsCall.type = "text/javascript";
-    LoadPostsCall.src = "https://dev.scribblelive.com/api/rest/event/" + this.Options.EventId + "/all/?Token=" + this.Options.APIToken + "&Order=asc&format=json&Since=" + LastModifiedTimeFormatted + "&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
+    LoadPostsCall.src = "http://apiv1.scribblelive.com/event/" + this.Options.EventId + "/all/?Token=" + this.Options.APIToken + "&Order=asc&format=json&Since=" + LastModifiedTimeFormatted + "&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
     document.getElementsByTagName("head")[0].appendChild(LoadPostsCall);
 
 };
@@ -620,6 +620,6 @@ RecentPosts.prototype.CreatePostList = function () {
 RecentPosts.prototype.GetAllPosts = function () {
     var LoadPostsCall = document.createElement("script");
     LoadPostsCall.type = "text/javascript";
-    LoadPostsCall.src = "https://dev.scribblelive.com/api/rest/event/" + this.Options.EventId + "/page/last/?Token=" + this.Options.APIToken + "&Max=" + this.Options.TotalPostsToShow + "&Order=asc&format=json&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
+    LoadPostsCall.src = "http://apiv1.scribblelive.com/event/" + this.Options.EventId + "/page/last/?Token=" + this.Options.APIToken + "&Max=" + this.Options.TotalPostsToShow + "&Order=asc&format=json&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
     document.getElementsByTagName("head")[0].appendChild(LoadPostsCall);
 };
