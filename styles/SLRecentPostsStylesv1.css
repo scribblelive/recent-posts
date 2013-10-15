@@ -625,73 +625,6 @@ top: 50%;
 	position: absolute;
 }
 
-#RecentPostsList .SlideShowReorderContainer {
-	position: absolute;
-	z-index: 2;
-	background-color: rgba(255, 255, 255, 0.6 );
-}
-
-#RecentPostsList .SlideShowReorder img {
-	height: 100px;
-	width: 100px;
-	border: 5px solid #fff;
-	-moz-box-shadow: 0 0 2px #333;
-	-webkit-box-shadow: 0 0 2px #333;
-	box-shadow: 0 0 2px #333;
-}
-
-#RecentPostsList .SlideShowReorder img:hover {
-	cursor: pointer;
-}
-
-#RecentPostsList .SlideShowReorder {
-	list-style-type: none;
-	margin: 0;
-	padding: 5px;
-}
-
-#RecentPostsList .SlideShowReorder li
-{
-	float: left;
-	border: 5px solid #fff;
-	width: 100px;
-	height: 100px;
-	margin: 5px;
-	clear: none;
-	padding: 0;
-	-moz-box-shadow: 0 0 2px #333;
-	-webkit-box-shadow: 0 0 2px #333;
-}
-
-#RecentPostsList .SlideShowReorder li img {
-	border: 0;
-}
-
-#RecentPostsList .SlideShowReorderHelper {
-	background-color: rgba(233, 0, 0, 0.6);
-}
-
-#RecentPostsList .SL_SlideShow .FloatingCaptionButton
- {
-	right: 0;
-	left: 0;
-	margin-top: 2px;
-}
-
-#RecentPostsList .SL_SlideShow .FloatingCaptionButton span {
-	padding: 0 0 0 2px;
-}
-
-#RecentPostsList .SL_SlideShow .FloatingCaptionButton:hover {
-	cursor: text;
-}
-
-#RecentPostsList .SlideShowHotSpot {
-	z-index: 999;
-	text-shadow: 0 1px 0 #fff;
-	text-shadow: 0 1px 0 rgba( 255, 255, 255, 0.5 );
-}
-
 #RecentPostsList .SlideShowLoading {
 	position: absolute;
 	z-index: 3;
@@ -699,41 +632,9 @@ top: 50%;
 	background-color: rgba(236, 236, 236, 0.6);
 }
 
-#RecentPostsList .SlideShowHotSpot {
-	position: absolute;
-	z-index: 3;
-	color: #000;
-	font-family: Georgia, 'Times New Roman';
-	font-weight: bold;
-	font-style: italic;
-	font-size: 16px;
- filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCECECEC, endColorstr=#CCDDDDDD);
-	background-color: rgba(236, 236, 236, 0.6);
-	text-align: center;
-}
-
 #RecentPostsList .SL_SlideShow_Slide .Caption {
 	border: 0;
 	background: transparent;
-}
-
-#RecentPostsList .SlideShowReorder img {
-	height: 100px;
-	width: 100px;
-}
-
-#RecentPostsList .SlideShowReorder img:hover {
-	cursor: pointer;
-}
-
-#RecentPostsList .SlideShowReorder {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-#RecentPostsList .SlideShowReorderHelper {
-	background-color: rgba(233, 0, 0, 0.6);
 }
 
 ul.RecentPostsWidget >li:nth-child(odd) {
