@@ -65,26 +65,30 @@ function RecentPosts(Options) {
     // Set an index to keep track of multiple events using this script.
     this.InstanceIndex = RecentPosts.StoreInstance(this);
 
-    var _self = this,
+    var that = this,
+        tries = 0,
         S;
 
     var interval = setInterval( function() {
 
-        if( typeof Scrbbl !== 'undefined' ) {
+        if( typeof scrbbl !== 'undefined' ) {
 
-            RecentPosts.__S = new Scrbbl(_self.Options.EventId);
+            RecentPosts.__S = new scrbbl( { "ShowCaptions": that.Options.ShowCaptions , "EventId" : that.Options.EventId, "IncludeJquery" : false });
             // Call the function that creates the element that the posts will be added to.
-            _self.CreatePostList();
+            that.CreatePostList();
 
             // Call the function that loads the most recent posts.
-            _self.GetAllPosts();
+            that.GetAllPosts();
 
+            clearInterval( interval );
+        }
+        if (++tries >=10){
             clearInterval( interval );
         }
 
     }, 200 );
 
-    $('body').append('<script type="text/javascript" src="js/Scrbbl.js"></script>');
+    $('body').append('<script type="text/javascript" src="js/scrbbl.js"></script>');
 
     (function( w, d, eid ){
           var id = 'sl-libjs', where = d.getElementsByTagName( 'script' )[0];
@@ -221,24 +225,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
         NewAvatarImage.src = pPost.Creator.Avatar;
     }
 
-    // Create a div with a class of Content that contains the post content.
-    var NewContentDiv = document.createElement("div");
-    NewContentDiv.className = "Content";
-
-    // Add any image, video, or audio to the post content div.
-    if (pPost.Media !== undefined) {
-        NewContentDiv.innerHTML = RecentPosts.__S.AddMedia(pPost);
-    }
-
-    // If the post is a poll, display the poll.
-    else if (pPost.Type === "POLL") {
-        NewContentDiv.appendChild(RecentPosts.__S.DisplayPoll(pPost.Entities, false));
-    }
-
-    // Add the regular content if the post is not media or a poll.
-    else {
-        NewContentDiv.innerHTML = pPost.Content;
-    }
+    var NewContentDiv = RecentPosts.__S.Render(pPost);
 
     // Create a div with the class of Meta that contains the creator name, the source, and the date and time of the post.
     var NewMetaDiv = document.createElement("div");
@@ -283,13 +270,6 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     } else {
         document.getElementById("RecentPostsWidget" + this.InstanceIndex).insertBefore(NewListItem, document.getElementById("RecentPostsWidget" + this.InstanceIndex).firstChild);
     }
-
-    if(jQuerySL(NewListItem).find(".SL_SlideShow").length){
-        setTimeout(function () {
-            RecentPosts.__S.ResizeAllSlideshows(NewListItem);
-        }, 200);
-    }
-
 };
 
 
@@ -309,11 +289,8 @@ RecentPosts.prototype.EditPost = function (pPostToEdit) {
     var PostElements = document.getElementById(pPostToEdit.Id).getElementsByTagName("div");
     for (var i = 0; i < PostElements.length; i++) {
         if (PostElements[i].className === "Content") {
-            if (pPostToEdit.Media !== undefined) {
-                PostElements[i].innerHTML = this.AddMedia(pPostToEdit);
-            } else {
-                PostElements[i].innerHTML = pPostToEdit.Content;
-            }
+
+            $(PostElements[i]).replaceWith(RecentPosts.__S.Render(pPostToEdit));
         }
     }
 };

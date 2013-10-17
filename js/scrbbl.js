@@ -1,47 +1,50 @@
 (function ($, window, undefined) {
     
-    var defaults = {};
+    scrbbl = function ( opts ) {
 
-
-    Scrbbl = function ( opts ) {
+        defaults = {
+            ShowCaptions: true,
+            EventId: "",
+            IncludeJquery: true
+        }
 
         this.opts = $.extend(true, {}, defaults, opts);
-
-        this.inst = {};
-
         this.init();
 
     };
 
 
-    Scrbbl.prototype = {
+    scrbbl.prototype = {
 
-        constructor: Scrbbl,
+        constructor: scrbbl,
 
-        opts: {},
         
         init: function ( ) {
 
-            //           
+            $('head').append('<link rel="stylesheet" type="text/css" href="styles/scrbbl.css"></link>')
+
+            if (this.opts.IncludeJquery){
+                $('body').append('<script  src="js/jquery-1.8.3.min.js"></script>');            
+            }      
 
             /* EVENT LISTENERS ============================================================ */
 
             $(".SlideShowNext").live('click', function (e) {
-            e.preventDefault();
-            var SlideShowDiv = $(this).parent();
-            var VisibleSlide = SlideShowDiv.find(".SL_SlideShow_Slide").not(".HideSlide");
-            var NextSlide = VisibleSlide.nextAll(".HideSlide").first();
+                e.preventDefault();
+                var SlideShowDiv = $(this).parent();
+                var VisibleSlide = SlideShowDiv.find(".SL_SlideShow_Slide").not(".HideSlide");
+                var NextSlide = VisibleSlide.nextAll(".HideSlide").first();
 
-            if (NextSlide.length === 0) {
-                NextSlide = SlideShowDiv.find(".SL_SlideShow_Slide:first");
-                Scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, 1);
-            }
-            else {
-                Scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, parseInt(SlideShowDiv.find(".SL_SlideShow_Current").html(), 10) + 1);
-            }
-            NextSlide.removeClass("HideSlide");
-            VisibleSlide.addClass("HideSlide");
-            return false;
+                if (NextSlide.length === 0) {
+                    NextSlide = SlideShowDiv.find(".SL_SlideShow_Slide:first");
+                    scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, 1);
+                }
+                else {
+                    scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, parseInt(SlideShowDiv.find(".SL_SlideShow_Current").html(), 10) + 1);
+                }
+                NextSlide.removeClass("HideSlide");
+                VisibleSlide.addClass("HideSlide");
+                return false;
             });
 
             $(".SlideShowPrev").live('click', function (e) {
@@ -52,10 +55,10 @@
 
                 if (PrevSlide.length === 0) {
                     PrevSlide = SlideShowDiv.find(".SL_SlideShow_Slide:last");
-                    Scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, SlideShowDiv.find(".SL_SlideShow_Slide").length);
+                    scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, SlideShowDiv.find(".SL_SlideShow_Slide").length);
                 }
                 else {
-                    Scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, parseInt(SlideShowDiv.find(".SL_SlideShow_Current").html(), 10) - 1);
+                    scrbbl.prototype.UpdateSlideCurrent(SlideShowDiv, parseInt(SlideShowDiv.find(".SL_SlideShow_Current").html(), 10) - 1);
                 }
                 PrevSlide.removeClass("HideSlide");
                 VisibleSlide.addClass("HideSlide");
@@ -66,11 +69,42 @@
 
         },
 
+        Render: function(pPost){
+
+            // Create a div with a class of Content that contains the post content.
+            var NewContentDiv = document.createElement("div");
+            NewContentDiv.className = "Content";
+
+            // Add any image, video, or audio to the post content div.
+            if (pPost.Media !== undefined) {
+                NewContentDiv.innerHTML = this.AddMedia(pPost);
+            }
+
+            // If the post is a poll, display the poll.
+            else if (pPost.Type === "POLL") {
+                NewContentDiv.appendChild(this.DisplayPoll(pPost.Entities, false));
+            }
+
+            // Add the regular content if the post is not media or a poll.
+            else {
+                NewContentDiv.innerHTML = pPost.Content;
+            }
+
+            var that = this;
+            if ($(NewContentDiv).find(".SL_SlideShow").length){
+                setTimeout(function() {
+                    that.ResizeAllSlideshows(NewContentDiv);    
+                }, 500);
+            }
+
+            return NewContentDiv;
+        },
+
        //resize all slideshows in a container
         ResizeAllSlideshows: function(container){
-            var _self = this;
+            var that = this;
             jQuerySL(container).find('.SL_SlideShow').each(function (i, el) {
-                _self.ResizeSlideshow(jQuerySL(el));
+                that.ResizeSlideshow(jQuerySL(el));
             });
         },
 
@@ -222,7 +256,7 @@
                 var PollQuestion = document.createElement("dd");
                 PollQuestion.id = "Answer" + PollAnswers[p].Id;
                 if (AlreadyVoted === false) {
-                    PollQuestion.innerHTML = "<a class='Vote' onclick='Scrbbl.prototype.VoteOnPoll(" + pPostContent.Id + "," + PollAnswers[p].Id + ")'><input type='radio' /></a><span>" + PollAnswers[p].Text + "</span>";
+                    PollQuestion.innerHTML = "<a class='Vote' onclick='scrbbl.prototype.VoteOnPoll(" + pPostContent.Id + "," + PollAnswers[p].Id + ")'><input type='radio' /></a><span>" + PollAnswers[p].Text + "</span>";
                 } else if (AlreadyVoted === true) {
                     PollQuestion.innerHTML = PollAnswers[p].Text + " (" + PollAnswers[p].Votes + " votes)";
                 }
@@ -249,7 +283,7 @@
             // Add the api call that submits the vote.
             var VotePollAPICall = document.createElement("script");
             VotePollAPICall.type = "text/javascript";
-            VotePollAPICall.src = "http://apiv1.scribblelive.com/poll/" + pPollId + "/vote/" + pAnswerId + "?callback=Scrbbl.prototype.PollVoteSuccess";
+            VotePollAPICall.src = "http://apiv1.scribblelive.com/poll/" + pPollId + "/vote/" + pAnswerId + "?callback=scrbbl.prototype.PollVoteSuccess";
             document.getElementsByTagName("head")[0].appendChild(VotePollAPICall);
         },
 
@@ -288,7 +322,7 @@
 
             // Add the caption to the media added above.
             var NewContent;
-            if ((pPost.Content !== "") && (pPost.Content !== undefined) && (this.Options.ShowCaptions)) {
+            if ((pPost.Content !== "") && (pPost.Content !== undefined) && (this.opts.ShowCaptions)) {
                 var MediaCaption = "<p class='Caption'>" + pPost.Content + "</p>";
                 NewContent = MediaHtml + MediaCaption;
             } else {
