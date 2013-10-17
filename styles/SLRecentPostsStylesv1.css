@@ -1,5 +1,5 @@
 
-ul.RecentPostsWidget {
+ul.SL-Posts {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
@@ -11,37 +11,37 @@ ul.RecentPostsWidget {
 	float: left;
 }
 
-ul.RecentPostsWidget li {
+ul.SL-Posts li {
 	margin: 0;
 	padding: 10px;
 	list-style-type: none;
 	border-bottom: 1px solid #ccc;
 }
 
-ul.RecentPostsWidget li .avatar-area {
+ul.SL-Posts li .avatar-area {
 	float: left;
 	margin: 0 10px 0 0;
 }
 
-ul.RecentPostsWidget li .Content img {
+ul.SL-Posts li .Content img {
 	float: none;
 	margin: 0 0 10px;
 	width: 100%;
 }
 
-ul.RecentPostsWidget li .Content {
+ul.SL-Posts li .Content {
 	padding-bottom: 5px;
 	color: #333;
 	margin-left: 60px;
 }
 
-ul.RecentPostsWidget li .Meta {
+ul.SL-Posts li .Meta {
 	font-size: 11px;
 	color: #555;
 	clear: both;
 }
 
-ul.RecentPostsWidget li .Meta .ServerTime {
+ul.SL-Posts li .Meta .ServerTime {
 	display: none;
 }
 
@@ -49,9 +49,8 @@ dd.Voting {
 	color: green;
 }
 
-/****Advance Post Style Start****/ 
 
-#RecentPostsList blockquote h3{
+.SL-Posts blockquote h3{
 letter-spacing: -0.03em;
 margin: 0 0 10px ;
 font-size: 15px;
@@ -60,9 +59,10 @@ clear: both;
 }
 
 /* TWEETS */
+/****Advance Post Style Start****/ 
 
-#RecentPostsList li .Content .sltc-twitter,
- #RecentPostsList .sltc-twitter {
+.SL-Posts li .Content .sltc-twitter,
+ .SL-Posts .sltc-twitter {
 	position: relative;
 	margin: 0;
 	padding: 15px 15px 10px 15px;
@@ -76,14 +76,14 @@ clear: both;
 	width: inherit;
 }
 
-#RecentPostsList li .Content .sltc-twitter a,
- #RecentPostsList .sltc-twitter a {
+.SL-Posts li .Content .sltc-twitter a,
+ .SL-Posts .sltc-twitter a {
 	color: #000;
 	text-decoration: none;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-logo,
- #RecentPostsList .sltc-logo {
+.SL-Posts li .Content .sltc-twitter .sltc-logo,
+ .SL-Posts .sltc-logo {
 	position: absolute;
 	top: 5px;
 	right: 5px;
@@ -92,21 +92,21 @@ clear: both;
 	background: url(../images/twitter-bird.png) 0 0 no-repeat;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-logo a,
- #RecentPostsList .sltc-logo a {
+.SL-Posts li .Content .sltc-twitter .sltc-logo a,
+ .SL-Posts .sltc-logo a {
 	width: 25px;
 	height: 25px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-avatar,
- #RecentPostsList .sltc-avatar {
+.SL-Posts li .Content .sltc-twitter .sltc-author .sltc-avatar,
+ .SL-Posts .sltc-avatar {
 	float: left;
 	width: 40px;
 	margin: 0 10px 0 0;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-avatar img,
- #RecentPostsList .sltc-avatar img {
+.SL-Posts li .Content .sltc-twitter .sltc-author .sltc-avatar img,
+ .SL-Posts .sltc-avatar img {
 	float: left;
 	width: 40px;
 	height: 40px;
@@ -115,44 +115,44 @@ clear: both;
 	border-radius: 3px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-info .sltc-name,
- #RecentPostsList .sltc-twitter .sltc-author .sltc-info .sltc-name {
+.SL-Posts li .Content .sltc-twitter .sltc-author .sltc-info .sltc-name,
+ .SL-Posts .sltc-twitter .sltc-author .sltc-info .sltc-name {
 	margin: 0 0 2px 0;
 	font-weight: bold;
 	font-size: 18px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-info .sltc-username,
- #RecentPostsList .sltc-twitter .sltc-author .sltc-info .sltc-username {
+.SL-Posts li .Content .sltc-twitter .sltc-author .sltc-info .sltc-username,
+ .SL-Posts .sltc-twitter .sltc-author .sltc-info .sltc-username {
 	margin: 0 0 10px 0;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-author .sltc-info .sltc-username a,
- #RecentPostsList .sltc-twitter .sltc-author .sltc-info .sltc-username a {
+.SL-Posts li .Content .sltc-twitter .sltc-author .sltc-info .sltc-username a,
+ .SL-Posts .sltc-twitter .sltc-author .sltc-info .sltc-username a {
 	color: #999;
 	font-size: 14px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-text,
- #RecentPostsList .sltc-twitter .sltc-text {
+.SL-Posts li .Content .sltc-twitter .sltc-text,
+ .SL-Posts .sltc-twitter .sltc-text {
 	clear: left;
 	font-family: "Times New Roman";
 	font-size: 17px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-text a,
- #RecentPostsList .sltc-twitter .sltc-text a {
+.SL-Posts li .Content .sltc-twitter .sltc-text a,
+ .SL-Posts .sltc-twitter .sltc-text a {
 	color: #999;
 	text-decoration: none;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-text a:hover,
- #RecentPostsList .sltc-twitter .sltc-text a:hover {
+.SL-Posts li .Content .sltc-twitter .sltc-text a:hover,
+ .SL-Posts .sltc-twitter .sltc-text a:hover {
 	text-decoration: underline;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-text .sltc-tweetimage,
- #RecentPostsList .sltc-twitter .sltc-text .sltc-tweetimage {
+.SL-Posts li .Content .sltc-twitter .sltc-text .sltc-tweetimage,
+ .SL-Posts .sltc-twitter .sltc-text .sltc-tweetimage {
 	width: 95%;
 	margin: 10px auto;
 	padding: 10px;
@@ -161,8 +161,8 @@ clear: both;
 	text-align: center;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-text .sltc-tweetimage img,
- #RecentPostsList .sltc-twitter .sltc-text .sltc-tweetimage img {
+.SL-Posts li .Content .sltc-twitter .sltc-text .sltc-tweetimage img,
+ .SL-Posts .sltc-twitter .sltc-text .sltc-tweetimage img {
 	display: inline-block;
 	width: auto;
 	max-width: 100%;
@@ -170,8 +170,8 @@ clear: both;
 	padding: 0;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-lower,
- #RecentPostsList .sltc-twitter .sltc-lower {
+.SL-Posts li .Content .sltc-twitter .sltc-lower,
+ .SL-Posts .sltc-twitter .sltc-lower {
 	position: relative;
 	margin: 15px 0 0 0;
 	font-size: 12px;
@@ -179,14 +179,14 @@ clear: both;
 	overflow: hidden;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-lower a,
- #RecentPostsList .sltc-twitter .sltc-lower a {
+.SL-Posts li .Content .sltc-twitter .sltc-lower a,
+ .SL-Posts .sltc-twitter .sltc-lower a {
 	float: left;
 	color: #999;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions,
- #RecentPostsList .sltc-twitter .sltc-actions {
+.SL-Posts li .Content .sltc-twitter .sltc-actions,
+ .SL-Posts .sltc-twitter .sltc-actions {
 	float: right;
 	margin: 0;
 	list-style: none;
@@ -197,8 +197,8 @@ clear: both;
 	background-color: transparent;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li,
- #RecentPostsList .sltc-twitter .sltc-actions li {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li,
+ .SL-Posts .sltc-twitter .sltc-actions li {
 	float: left;
 	display: block;
 	width: auto;
@@ -211,18 +211,18 @@ clear: both;
 	border-bottom: medium none;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li:hover,
- #RecentPostsList .sltc-twitter .sltc-actions li:hover {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li:hover,
+ .SL-Posts .sltc-twitter .sltc-actions li:hover {
 	color: #333;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li.reply,
- #RecentPostsList .sltc-twitter .sltc-actions li.reply {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li.reply,
+ .SL-Posts .sltc-twitter .sltc-actions li.reply {
 	background-position: -3px 1px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li.reply:hover,
- #RecentPostsList .sltc-twitter .sltc-actions li.reply:hover {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li.reply:hover,
+ .SL-Posts .sltc-twitter .sltc-actions li.reply:hover {
 	background-position: -3px -27px;
 }
 
@@ -231,30 +231,30 @@ clear: both;
 	background-color: transparent;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li.retweet,
- #RecentPostsList .sltc-twitter .sltc-actions li.retweet {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li.retweet,
+ .SL-Posts .sltc-twitter .sltc-actions li.retweet {
 	padding-left: 23px;
 	background-position: -2px -54px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li.retweet:hover,
- #RecentPostsList .sltc-twitter .sltc-actions li.retweet:hover {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li.retweet:hover,
+ .SL-Posts .sltc-twitter .sltc-actions li.retweet:hover {
 	background-position: -2px -81px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li.favorite,
- #RecentPostsList .sltc-twitter .sltc-actions li.favorite {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li.favorite,
+ .SL-Posts .sltc-twitter .sltc-actions li.favorite {
 	background-position: -1px -110px;
 }
 
-#RecentPostsList li .Content .sltc-twitter .sltc-actions li.favorite:hover,
- #RecentPostsList .sltc-twitter .sltc-actions li.favorite:hover {
+.SL-Posts li .Content .sltc-twitter .sltc-actions li.favorite:hover,
+ .SL-Posts .sltc-twitter .sltc-actions li.favorite:hover {
 	background-position: -1px -139px;
 }
 
 /* BLOCKQUOTES */
 
-#RecentPostsList blockquote {
+.SL-Posts blockquote {
 	position: relative;
 	display: block;
 	width: auto;
@@ -269,16 +269,16 @@ clear: both;
 	font-style: italic;
 }
 
-#RecentPostsList blockquote h3 {
+.SL-Posts blockquote h3 {
 	font-style: normal;
 }
 
 
-ul.RecentPostsWidget li blockquote .Content { 
+ul.SL-Posts li blockquote .Content { 
 	margin:0;
 } 
 
-#RecentPostsList blockquote span.Meta {
+.SL-Posts blockquote span.Meta {
 	display: block;
 	min-height: 30px;
 	margin: 10px -7px -20px 10px;
@@ -291,7 +291,7 @@ ul.RecentPostsWidget li blockquote .Content {
 	font-style: normal;
 }
 
-#RecentPostsList blockquote span.Meta img {
+.SL-Posts blockquote span.Meta img {
 	float: right;
 	width: 30px;
 	height: 30px;
@@ -300,11 +300,11 @@ ul.RecentPostsWidget li blockquote .Content {
 	border-radius: 3px;
 }
 
-#RecentPostsList blockquote span.Meta a {
+.SL-Posts blockquote span.Meta a {
 	font-weight: normal;
 }
  
-#RecentPostsList blockquote span.Meta em,  #RecentPostsList blockquote span.Meta i, {
+.SL-Posts blockquote span.Meta em,  .SL-Posts blockquote span.Meta i, {
  display: block;
  font-weight: bold;
  font-style: normal;
@@ -316,7 +316,7 @@ ul.RecentPostsWidget li blockquote .Content {
 
 /* MEDIA */
 
-#RecentPostsList  .Media
+.SL-Posts  .Media
  {
 	position: relative;
 	margin: 0;
@@ -330,21 +330,21 @@ ul.RecentPostsWidget li blockquote .Content {
 	text-align: center;
 }
 
-#RecentPostsList .Media.SL_Left,
+.SL-Posts .Media.SL_Left,
 #Discussion .Posts li .Content .Media.SL_Left {
 	margin: 0 10px 10px 0;
 	width: 49%;
 	float: left;
 }
 
-#RecentPostsList .Media.SL_Right,
+.SL-Posts .Media.SL_Right,
 #Discussion .Posts li .Content .Media.SL_Right {
 	margin: 0 0 10px 10px;
 	width: 49%;
 	float: right;	
 }
 
-#RecentPostsList .Media .Caption {
+.SL-Posts .Media .Caption {
 	position: relative;
 	margin: 0;
 	padding: 4px 0 0 0;
@@ -354,7 +354,7 @@ ul.RecentPostsWidget li blockquote .Content {
 	text-align: center;
 }
 
-#RecentPostsList .Media .Meta,
+.SL-Posts .Media .Meta,
  #Discussion .Posts li .Content .Media .Meta {
 	display: block;
 	margin: 5px 0 0 0;
@@ -366,13 +366,13 @@ ul.RecentPostsWidget li blockquote .Content {
 	line-height: 18px;
 }
 
-#RecentPostsList .Media embed
+.SL-Posts .Media embed
 {
     max-width: 100%;    
 }
 
-#RecentPostsList .Media .Meta em,
- #RecentPostsList .Media .Meta i,
+.SL-Posts .Media .Meta em,
+ .SL-Posts .Media .Meta i,
  #Discussion .Posts li .Content .Media .Meta em,
  #Discussion .Posts li .Content .Media .Meta i {
 	font-size: 11px;
@@ -383,7 +383,7 @@ ul.RecentPostsWidget li blockquote .Content {
 
 /* iframes */
 
-#RecentPostsList iframe 
+.SL-Posts iframe 
 {
     max-width:100%;
 }
@@ -401,7 +401,7 @@ h1{
 a:link, a:visited, a:active { color: #999999;}
 
 
-#RecentPostsList .SL_SlideShow {
+.SL-Posts .SL_SlideShow {
 	-webkit-font-smoothing: antialiased;
 	position: relative;
 	clear: both;
@@ -411,7 +411,7 @@ a:link, a:visited, a:active { color: #999999;}
 
 }
 
-#RecentPostsList .SL_SlideShow_Slide {
+.SL-Posts .SL_SlideShow_Slide {
 	width: 100%;
 	overflow: hidden;
 	visibility: visible;
@@ -422,7 +422,7 @@ a:link, a:visited, a:active { color: #999999;}
 	transition: opacity 0.5s ease-in-out;
 }
 
-#RecentPostsList .SL_SlideShow .MediaWrap {
+.SL-Posts .SL_SlideShow .MediaWrap {
 	padding: 5px;
 	margin: 0;
 	text-align: left;
@@ -436,23 +436,23 @@ a:link, a:visited, a:active { color: #999999;}
 /* Fallback for IE7/8 */
 @media \0screen\,screen\9 {
 
-#RecentPostsList .SL_SlideShow .MediaWrap {
+.SL-Posts .SL_SlideShow .MediaWrap {
 	border: 1px solid #e9e9e9;
 }
 }
 
-#RecentPostsList .SL_SlideShow .Media img,
+.SL-Posts .SL_SlideShow .Media img,
  {
 	max-width: 100%;
 	position: relative;
 }
 
-#RecentPostsList .SL_SlideShow .MediaWrap .Media img.loading {
+.SL-Posts .SL_SlideShow .MediaWrap .Media img.loading {
 	visibility: hidden;
 }
 
 
-#RecentPostsList .SL_SlideShow .MediaWrap .Media {
+.SL-Posts .SL_SlideShow .MediaWrap .Media {
 	position: relative ;
 	margin: 0 ;
 	padding: 0;
@@ -463,18 +463,18 @@ a:link, a:visited, a:active { color: #999999;}
 	border-radius: 0px;
 }
 
-#RecentPostsList .SL_SlideShow .MediaWrap .Media img {
+.SL-Posts .SL_SlideShow .MediaWrap .Media img {
 	margin: 0px;
 }
 
-#RecentPostsList .SL_SlideShow .MetaWrap {
+.SL-Posts .SL_SlideShow .MetaWrap {
 	left: 0;
 	right: 0;
 	white-space: nowrap;
 }
 
 
-#RecentPostsList .SL_SlideShow .MediaWrap .Media .Caption{
+.SL-Posts .SL_SlideShow .MediaWrap .Media .Caption{
 	position: relative;
 	z-index: 1;
 	left: auto;
@@ -492,13 +492,13 @@ a:link, a:visited, a:active { color: #999999;}
 
 }
 
-#RecentPostsList .SL_SlideShow .MediaWrap .Media .Caption span{ clear:both;}
+.SL-Posts .SL_SlideShow .MediaWrap .Media .Caption span{ clear:both;}
 
-#RecentPostsList .SL_SlideShow .Caption b {
+.SL-Posts .SL_SlideShow .Caption b {
 	display: block;
 }
 
-#RecentPostsList .SL_SlideShow .Media .MetaWrap .Meta {
+.SL-Posts .SL_SlideShow .Media .MetaWrap .Meta {
 	font-size: 11px ;
 	text-align: left;
 	margin: 0;
@@ -509,7 +509,7 @@ a:link, a:visited, a:active { color: #999999;}
 	background: none;
 }
 
-#RecentPostsList .SL_SlideShow .Media .MetaWrap .Meta em {
+.SL-Posts .SL_SlideShow .Media .MetaWrap .Meta em {
 	float: none;
 	color: #CCC;
 	font-size: 11px;
@@ -517,7 +517,7 @@ a:link, a:visited, a:active { color: #999999;}
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-#RecentPostsList .SL_SlideShow_Counter {
+.SL-Posts .SL_SlideShow_Counter {
 	position: absolute;
     left: 0px;
     bottom: 0;
@@ -530,7 +530,7 @@ a:link, a:visited, a:active { color: #999999;}
     
 }
 
-#RecentPostsList .SL_SlideShow_Counter p {
+.SL-Posts .SL_SlideShow_Counter p {
 	margin: 0 0 0 3px;
 	padding: 10px 0 0;
 	font-size: 11px;
@@ -538,7 +538,7 @@ a:link, a:visited, a:active { color: #999999;}
 	color: #ccc;
 }
 
-#RecentPostsList .SL_SlideShow_Counter p .SL_SlideShow_Current {
+.SL-Posts .SL_SlideShow_Counter p .SL_SlideShow_Current {
 	font-size: 28px;
 	font-weight: bold;
 	display: block; 
@@ -546,17 +546,17 @@ a:link, a:visited, a:active { color: #999999;}
 	text-align: center ;
 }
 
-#RecentPostsList .SL_SlideShow:hover .SL_SlideShow_Counter p {
+.SL-Posts .SL_SlideShow:hover .SL_SlideShow_Counter p {
 	color: #333;
 }
 
-#RecentPostsList .SL_SlideShow:hover .MetaWrap .Meta *,
- #RecentPostsList .SL_SlideShow:hover .MetaWrap .Meta em
+.SL-Posts .SL_SlideShow:hover .MetaWrap .Meta *,
+ .SL-Posts .SL_SlideShow:hover .MetaWrap .Meta em
 {
 	color: #999;
 }
 
-#RecentPostsList .SlideShowNav {
+.SL-Posts .SlideShowNav {
 	position: absolute;
 	z-index: 1;
 	margin-top: -25px;
@@ -573,23 +573,23 @@ a:link, a:visited, a:active { color: #999999;}
 	filter: alpha(opacity=30);
 }
 
-#RecentPostsList .SlideShowNext,
-#RecentPostsList .SlideShowPrev,
-#RecentPostsList .SL_SlideShow:hover .SlideShowNav ,
-#RecentPostsList .SL_SlideShow .SlideShowNav:hover,
-#RecentPostsList .SL_SlideShow .SlideShowNav:active{ 	
+.SL-Posts .SlideShowNext,
+.SL-Posts .SlideShowPrev,
+.SL-Posts .SL_SlideShow:hover .SlideShowNav ,
+.SL-Posts .SL_SlideShow .SlideShowNav:hover,
+.SL-Posts .SL_SlideShow .SlideShowNav:active{ 	
 top: 50%;
 }
 
 
-#RecentPostsList .SlideShowNext {
+.SL-Posts .SlideShowNext {
 	right: 0;
 	background-position: 0 -50px;
 	cursor: pointer;  /* mobile iOS click event listener */
 
 }
 
-#RecentPostsList .SlideShowPrev {
+.SL-Posts .SlideShowPrev {
 	left: 0;
 	background-position: 100% -50px;
 	cursor: pointer; /* mobile iOS click event listener */
@@ -597,26 +597,26 @@ top: 50%;
 	
 }
 
-#RecentPostsList .SL_SlideShow:hover .SlideShowNav {
+.SL-Posts .SL_SlideShow:hover .SlideShowNav {
 	opacity: 0.6;
 	-moz-opacity: 0.6;
 	filter: alpha(opacity=60);
 
 }
 
-#RecentPostsList .SL_SlideShow .SlideShowNav:hover {
+.SL-Posts .SL_SlideShow .SlideShowNav:hover {
 	opacity: 1;
 	-moz-opacity: 1;
 	filter: alpha(opacity=100);
 
 }
 
-#RecentPostsList .SL_SlideShow .SlideShowNav:active {
+.SL-Posts .SL_SlideShow .SlideShowNav:active {
 	box-shadow: 0 -1px 2px rgba( 0, 0, 0, 0.2 );
 
 }
 
-#RecentPostsList .SL_SlideShow .HideSlide {
+.SL-Posts .SL_SlideShow .HideSlide {
 	opacity: 0;
 	-moz-opacity: 0;
 	filter: alpha(opacity=0);
@@ -625,18 +625,18 @@ top: 50%;
 	position: absolute;
 }
 
-#RecentPostsList .SlideShowLoading {
+.SL-Posts .SlideShowLoading {
 	position: absolute;
 	z-index: 3;
 	text-align: center;
 	background-color: rgba(236, 236, 236, 0.6);
 }
 
-#RecentPostsList .SL_SlideShow_Slide .Caption {
+.SL-Posts .SL_SlideShow_Slide .Caption {
 	border: 0;
 	background: transparent;
 }
 
-ul.RecentPostsWidget >li:nth-child(odd) {
+ul.SL-Posts >li:nth-child(odd) {
 background: #F8F8F8;
 }
