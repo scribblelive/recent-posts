@@ -100,6 +100,15 @@
             return NewContentDiv;
         },
 
+        RenderAll: function(pPosts){
+            var Posts = [];
+
+            for (var i=0 ; i < pPosts.length; i++){
+                Posts.push(this.Render(pPosts[i]));
+            }
+            return Posts;
+        },
+
        //resize all slideshows in a container
         ResizeAllSlideshows: function(container){
             var that = this;
