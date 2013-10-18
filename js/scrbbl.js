@@ -318,7 +318,7 @@
             var Media = pPost.Media;
             var MediaHtml;
             for (var m = 0; m < Media.length; m++) {
-                if (pPost.Type === "IMAGE" && Media[m].Type === "IMAGE") {
+                if ((pPost.Type === "IMAGE" || pPost.Type === "TWEET") && Media[m].Type === "IMAGE") {
                     MediaHtml = "<img src='" + Media[m].Url + "'/>";
                 }
                 if (pPost.Type === "VIDEO" && Media[m].Type === "VIDEO") {
