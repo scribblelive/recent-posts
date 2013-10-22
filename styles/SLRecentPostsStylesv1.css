@@ -61,3 +61,7 @@ clear: both;
 ul.SL-Posts >li:nth-child(odd) {
 background: #F8F8F8;
 }
+
+ul.SL-Posts img {
+    float:left;
+}
