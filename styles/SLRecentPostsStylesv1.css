@@ -1,5 +1,5 @@
 
-ul.SL-Posts {
+.SL-Posts {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
@@ -11,37 +11,37 @@ ul.SL-Posts {
 	float: left;
 }
 
-ul.SL-Posts li {
+.SL-Posts li {
 	margin: 0;
 	padding: 10px;
 	list-style-type: none;
 	border-bottom: 1px solid #ccc;
 }
 
-ul.SL-Posts li .avatar-area {
+.SL-Posts li .avatar-area {
 	float: left;
 	margin: 0 10px 0 0;
 }
 
-ul.SL-Posts li .Content img {
+.SL-Posts li .Content img {
 	float: none;
 	margin: 0 0 10px;
 	width: 100%;
 }
 
-ul.SL-Posts li .Content {
+.SL-Posts li .Content {
 	padding-bottom: 5px;
 	color: #333;
 	margin-left: 60px;
 }
 
-ul.SL-Posts li .Meta {
+.SL-Posts li .Meta {
 	font-size: 11px;
 	color: #555;
 	clear: both;
 }
 
-ul.SL-Posts li .Meta .ServerTime {
+.SL-Posts li .Meta .ServerTime {
 	display: none;
 }
 
@@ -58,10 +58,10 @@ font-weight: bold;
 clear: both;
 }
 
-ul.SL-Posts >li:nth-child(odd) {
+.SL-Posts >li:nth-child(odd) {
 background: #F8F8F8;
 }
 
-ul.SL-Posts img {
+.SL-Posts img {
     float:left;
 }

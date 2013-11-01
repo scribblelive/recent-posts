@@ -88,8 +88,7 @@ function RecentPosts(Options) {
 
     }, 200 );
 
-    $('body').append('<script type="text/javascript" src="js/scrbbl.js"></script>');
-
+    $('body').append('<script type="text/javascript" src="//embed.scribblelive.com/modules/sdk/scrbbl.js">');
     (function( w, d, eid ){
           var id = 'sl-libjs', where = d.getElementsByTagName( 'script' )[0];
 
@@ -214,6 +213,8 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
         }
     }
 
+    var IsTweet = pPost.Source.match("twitter");
+
     // Create a new list item with the post id as the id attribute.
     var NewListItem = document.createElement("li");
     NewListItem.id = pPost.Id;
@@ -232,13 +233,9 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     NewMetaDiv.className = "Meta";
     var PostDate = eval("new " + (pPost.LastModified.replace(/\//g, "")));
 
-    // Set the creator name. If the source is a social network, add a link to the social network account.
-    var CreatorName;
-    if (pPost.Source.match("twitter")) {
-        CreatorName = "<a href='http://www.twitter.com/" + pPost.Creator.Name + "'>" + pPost.Creator.Name + "</a>";
-    } else {
+    // Set the creator name.
         CreatorName = pPost.Creator.Name;
-    }
+    
 
     var NewMetaDivContent = "by " + CreatorName;
 
@@ -252,7 +249,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     NewMetaDiv.innerHTML = NewMetaDivContent;
 
     // If there was an avatar, add the image tag to the list item.
-    if (NewAvatarImage !== undefined) {
+    if (NewAvatarImage !== undefined && !IsTweet) {
         NewListItem.appendChild(NewAvatarImage);
     }
 
@@ -260,7 +257,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     NewListItem.appendChild(NewContentDiv);
 
     // Add the meta div to the list item if ShowMetaData is set to true.
-    if (this.Options.ShowMetaData) {
+    if (this.Options.ShowMetaData && !IsTweet) {
         NewListItem.appendChild(NewMetaDiv);
     }
 
