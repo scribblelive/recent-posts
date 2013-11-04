@@ -213,7 +213,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
         }
     }
 
-    var IsTweet = pPost.Source.match("twitter");
+    var IsTweet = pPost.Source.match(/<a.*href=("|')(https?:)?\/\/.*twitter\.com\/.*("|').*>twitter<\/a>/ig); 
 
     // Create a new list item with the post id as the id attribute.
     var NewListItem = document.createElement("li");
