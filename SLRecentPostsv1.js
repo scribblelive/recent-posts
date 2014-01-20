@@ -49,7 +49,7 @@ function RecentPosts(Options) {
         // Show only Facebook posts, true or false.
         ShowOnlyFacebookPosts: false,
         // Show only polls, true or false.
-        ShowOnlyPolls: false
+        ShowOnlyPolls: false,
         // CSS classes
         WidgetClass: 'RecentPostsWidget',
         ItemClass: '',
@@ -211,7 +211,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     // Create a new list item with the post id as the id attribute.
     var NewListItem = document.createElement("li");
     NewListItem.id = pPost.Id;
-    ewListItem.className = this.Options.ItemClass;
+    NewListItem.className = this.Options.ItemClass;
 
     // If there is an avatar associated with the creator of the post, create an image tag with the avatar url as the src attribute.
     var NewAvatarImage;
