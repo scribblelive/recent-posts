@@ -60,7 +60,9 @@ function RecentPosts(Options) {
         TranslateBy: 'by',
         TranslateOn: 'on',
         TranslateAt: 'at',
-        TranslateVia: 'via'
+        TranslateVia: 'via',
+        // 3rd party plugins
+        UseTimeagoPlugin: false
     };
 
     // Set the option values to the values passed in to the function.
@@ -259,8 +261,13 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     if (pPost.Source !== "") {
         NewMetaDivContent += " " + this.Options.TranslateVia + " " + pPost.Source;
     }
-
-    NewMetaDivContent += " " + this.Options.TranslateOn + " " + PostDate.toLocaleDateString() + " " + this.Options.TranslateAt + " " + PostDate.toLocaleTimeString();
+    
+    if (this.Options.UseTimeagoPlugin === true) {
+        NewMetaDivContent += " " + this.Options.TranslateOn + " " + $.timeago(PostDate);
+    }
+    else {
+        NewMetaDivContent += " " + this.Options.TranslateOn + " " + PostDate.toLocaleDateString() + " " + this.Options.TranslateAt + " " + PostDate.toLocaleTimeString();
+    }
 
     NewMetaDiv.innerHTML = NewMetaDivContent;
 
