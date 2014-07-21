@@ -235,7 +235,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     // Set the creator name. If the source is a social network, add a link to the social network account.
     var CreatorName; 
     if (pPost.Source.match("twitter")) {
-        CreatorName = "<a href='http://www.twitter.com/" + pPost.Creator.Name + "'>" + pPost.Creator.Name + "</a>";
+        CreatorName = "<a href='http://www.twitter.com/" + pPost.Source.match(/twitter\.com\/([^\/]+)\//)[1] + "'>" + pPost.Creator.Name + "</a>";
     } else {
         CreatorName = pPost.Creator.Name;
     }
