@@ -19,7 +19,7 @@ Add the main SLRecentPosts.js to the head of your page, and the tag below wherev
 ```HTML
 <script type="text/javascript">
 
-    var First = new RecentPosts?({
+    var First = new RecentPosts({
 
         APIToken: "", EventId: "", TotalPostsToShow: 10, WhereToAddPosts: "" 
 
