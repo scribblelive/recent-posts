@@ -432,6 +432,6 @@ RecentPosts.prototype.CreatePostList = function () {
 RecentPosts.prototype.GetAllPosts = function () {
     var LoadPostsCall = document.createElement("script");
     LoadPostsCall.type = "text/javascript";
-    LoadPostsCall.src = "http://apiv1.scribblelive.com/event/" + this.Options.EventId + "/page/last/?Token=" + this.Options.APIToken + "&Max=" + this.Options.TotalPostsToShow + "&Order=asc&format=json&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
+    LoadPostsCall.src = "http://apiv1.scribblelive.com/event/" + this.Options.EventId + "/page/last/?Token=" + this.Options.APIToken + "&PageSize=" + this.Options.TotalPostsToShow + "&Order=asc&format=json&callback=RecentPosts.GetInstance(" + this.InstanceIndex + ").DrawPosts";
     document.getElementsByTagName("head")[0].appendChild(LoadPostsCall);
 };
