@@ -49,7 +49,20 @@ function RecentPosts(Options) {
         // Show only Facebook posts, true or false.
         ShowOnlyFacebookPosts: false,
         // Show only polls, true or false.
-        ShowOnlyPolls: false
+        ShowOnlyPolls: false,
+        // CSS classes
+        WidgetClass: 'RecentPostsWidget',
+        ItemClass: '',
+        ImageClass: '',
+        ContentClass: 'Content',
+        MetaClass: 'Meta',
+        // Translation
+        TranslateBy: 'by',
+        TranslateOn: 'on',
+        TranslateAt: 'at',
+        TranslateVia: 'via',
+        // 3rd party plugins
+        UseTimeagoPlugin: false
     };
 
     // Set the option values to the values passed in to the function.
@@ -200,17 +213,19 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
     // Create a new list item with the post id as the id attribute.
     var NewListItem = document.createElement("li");
     NewListItem.id = pPost.Id;
+    NewListItem.className = this.Options.ItemClass;
 
     // If there is an avatar associated with the creator of the post, create an image tag with the avatar url as the src attribute.
     var NewAvatarImage;
     if (pPost.Creator.Avatar !== "" && this.Options.ShowAvatars) {
         NewAvatarImage = document.createElement("img");
         NewAvatarImage.src = pPost.Creator.Avatar;
+        NewAvatarImage.className = this.Options.ImageClass;
     }
 
     // Create a div with a class of Content that contains the post content.
     var NewContentDiv = document.createElement("div");
-    NewContentDiv.className = "Content";
+    NewContentDiv.className = this.Options.ContentClass;
 
     // Add any image, video, or audio to the post content div.
     if (pPost.Media !== undefined) {
@@ -229,7 +244,7 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
 
     // Create a div with the class of Meta that contains the creator name, the source, and the date and time of the post.
     var NewMetaDiv = document.createElement("div");
-    NewMetaDiv.className = "Meta";
+    NewMetaDiv.className = this.Options.MetaClass;
     var PostDate = eval("new " + (pPost.LastModified.replace(/\//g, "")));
 
     // Set the creator name. If the source is a social network, add a link to the social network account.
@@ -240,14 +255,19 @@ RecentPosts.prototype.AddPost = function (pPost, pPostList) {
         CreatorName = pPost.Creator.Name;
     }
 
-    var NewMetaDivContent = "by " + CreatorName;
+    var NewMetaDivContent = this.Options.TranslateBy + " " + CreatorName;
 
     // Add the source of the post if there is one.
     if (pPost.Source !== "") {
-        NewMetaDivContent += " via " + pPost.Source;
+        NewMetaDivContent += " " + this.Options.TranslateVia + " " + pPost.Source;
     }
-
-    NewMetaDivContent += " on " + PostDate.toLocaleDateString() + " at " + PostDate.toLocaleTimeString();
+    
+    if (this.Options.UseTimeagoPlugin === true) {
+        NewMetaDivContent += " " + this.Options.TranslateOn + " " + $.timeago(PostDate);
+    }
+    else {
+        NewMetaDivContent += " " + this.Options.TranslateOn + " " + PostDate.toLocaleDateString() + " " + this.Options.TranslateAt + " " + PostDate.toLocaleTimeString();
+    }
 
     NewMetaDiv.innerHTML = NewMetaDivContent;
 
@@ -424,7 +444,7 @@ RecentPosts.prototype.GetNewPosts = function (pLastPostTime) {
 RecentPosts.prototype.CreatePostList = function () {
     var PostList = document.createElement("ul");
     PostList.setAttribute("id", "RecentPostsWidget" + this.InstanceIndex);
-    PostList.className = "RecentPostsWidget";
+    PostList.className = this.Options.WidgetClass;
     document.getElementById(this.Options.WhereToAddPosts).appendChild(PostList);
 };
 
